@@ -5,11 +5,14 @@ import PackageDescription
 
 let package = Package(
     name: "PathPresenter",
+    platforms: [
+        .macOS(.v10_15), .iOS(.v13), .tvOS(.v13), .watchOS(.v6)
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "PathPresenter",
-            targets: ["PathPresenter"]),
+            targets: ["PathPresenter"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -23,6 +26,6 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "PathPresenterTests",
-            dependencies: ["PathPresenter"]),
+            dependencies: ["PathPresenter"])
     ]
 )
