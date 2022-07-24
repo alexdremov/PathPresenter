@@ -5,7 +5,7 @@ In SwiftUI, View is a function of the state. Routing is not an exception.
 
 ## Why
 - `.sheet()` usages are usually messy, deviate from app architecture, and require additional business-logic
-- Creating view sequences in SwiftUI is not elegant if not messy
+- Creating view sequences in SwiftUI is not elegant and even not messy
 - MVVM is gorgeous, but what about one level above? Routing between MVVM modules is cluttered.
 
 ## Advantages
