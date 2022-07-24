@@ -110,7 +110,7 @@ struct RootViewGitHub: View {
 ```
 <hr>
 
-## Transitions and multi-view example
+## Transitions and animation example
 <img width=900 src="https://i.ibb.co/NVwcQp5/ezgif-com-gif-maker-4.gif">
 
 ## Documentation
