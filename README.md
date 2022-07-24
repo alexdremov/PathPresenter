@@ -1,4 +1,7 @@
 # PathPresenter
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/AlexRoar/PathPresenter)
+![GitHub top language](https://img.shields.io/github/languages/top/AlexRoar/PathPresenter)
+
 Pure SwiftUI routing with transitions, animations, and `.sheet()` support.
 
 In SwiftUI, View is a function of the state. Routing is not an exception.
