@@ -89,6 +89,7 @@ public extension PathPresenter {
             ZStack(alignment: .topLeading) {
                 if let rootView = rootView, !sheet {
                     rootView
+                        .zIndex(-1)
                 }
                 ForEach(content, id: \.hashValue) { elem in
                     switch elem {
@@ -129,13 +130,13 @@ public extension PathPresenter {
          */
         public var body: some View {
             coreView
+                .animation(path.relevantAnimation, value: path)
                 .sheet(isPresented: $path.sheetPresented,
                        onDismiss: {
                     path.sheetDismissed()
                 }, content: {
                     shitView
                 })
-                .animation(path.relevantAnimation, value: path)
         }
     }
 }

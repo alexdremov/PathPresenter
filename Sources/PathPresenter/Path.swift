@@ -243,7 +243,7 @@ public extension PathPresenter {
          Update `sheetPresented` state
          */
         private mutating func updateSheet() {
-            if case .sheet = path.last {
+            if path.last?.isSheet ?? false {
                 sheetPresented = true
             } else {
                 sheetPresented = false
