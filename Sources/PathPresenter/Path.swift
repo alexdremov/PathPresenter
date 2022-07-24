@@ -175,6 +175,7 @@ public extension PathPresenter {
                               hash: value.id.hashValue,
                               zIndex: zIndex))
             case .sheet(onDismiss: let onDismiss):
+                relevantAnimation = nil
                 path.append(.sheet(view: typeErased,
                                    hash: value.id.hashValue,
                                    onDismiss: onDismiss))
