@@ -44,14 +44,14 @@ public extension PathPresenter {
         /**
          Init with external path state
          */
-        init(path: Binding<Path>) {
+        public init(path: Binding<Path>) {
             self._path = path
         }
 
         /**
          Init with external path state and provide `rootView`
          */
-        init<RootView: View>(path: Binding<Path>,
+        public init<RootView: View>(path: Binding<Path>,
                              @ViewBuilder rootView:() -> RootView) {
             self.init(path: path)
             self.rootView = AnyView(rootView())
@@ -60,7 +60,7 @@ public extension PathPresenter {
         /**
          Use internal path state
          */
-        init() {
+        public init() {
             self._path = Binding.constant(Path())
             self.rootView = nil
 
@@ -70,7 +70,7 @@ public extension PathPresenter {
         /**
          Use internal path state and provide `rootView`
          */
-        init<RootView: View>(@ViewBuilder rootView: () -> RootView) {
+        public init<RootView: View>(@ViewBuilder rootView: () -> RootView) {
             self.init()
             self.rootView = AnyView(rootView())
         }
@@ -127,7 +127,7 @@ public extension PathPresenter {
         /**
          Final view structure
          */
-        var body: some View {
+        public var body: some View {
             coreView
                 .sheet(isPresented: $path.sheetPresented,
                        onDismiss: {

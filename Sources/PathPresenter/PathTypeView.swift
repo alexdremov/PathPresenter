@@ -13,7 +13,7 @@ public extension PathPresenter {
      Used internally for combining view with information about how it needs to be presented
      See `PathType`
      */
-    enum PathTypeView: Hashable, Identifiable {
+    internal enum PathTypeView: Hashable, Identifiable {
         case plain(view: AnyView,
                    hash: Int,
                    zIndex: Double)

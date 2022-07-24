@@ -24,7 +24,7 @@ public extension PathPresenter {
         /**
          Current views in path
          */
-        public private(set) var path = [PathTypeView]()
+        internal private(set) var path = [PathTypeView]()
 
         /**
          Is the last view in `path` is sheet
@@ -42,14 +42,14 @@ public extension PathPresenter {
         /**
          Path filtered without sheets
          */
-        public var noSheet: [PathTypeView] {
+        internal var noSheet: [PathTypeView] {
             path.filter({!$0.isSheet})
         }
 
         /**
          Path filtered with sheets only
          */
-        public var onlySheet: [PathTypeView] {
+        internal var onlySheet: [PathTypeView] {
             path.filter({$0.isSheet})
         }
 
@@ -82,13 +82,13 @@ public extension PathPresenter {
         /**
          Create empty path
          */
-        init() {}
+        public init() {}
 
         /**
          Initialize path with `Sequence` of views
          - type will be used for all views
          */
-        init<S: Sequence>(views: S, type: PathType = .plain)
+        public init<S: Sequence>(views: S, type: PathType = .plain)
             where S.Element: View {
                 append(contentsOf: views, type: type)
         }
@@ -97,7 +97,7 @@ public extension PathPresenter {
          Initialize with sequence of some items and ViewBuilder that can construct
          a view using an item.
          */
-        init<S: Sequence, Items: View>
+        public init<S: Sequence, Items: View>
         (data: S,
          type: PathType = .plain,
          @ViewBuilder content: (S.Element) -> Items) {
