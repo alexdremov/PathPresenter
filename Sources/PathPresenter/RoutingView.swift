@@ -92,19 +92,19 @@ extension PathPresenter {
                 }
                 ForEach(content, id: \.hashValue) { elem in
                     switch elem {
-                        case .plain(let view, hash: _, zIndex: let zIndex):
-                            view
-                                .zIndex(zIndex)
-                        case .animated(let view,
-                                       transition: let transition,
-                                       animation: _,
-                                       hash: _,
-                                       zIndex: let zIndex):
-                            view
-                                .zIndex(zIndex)
-                                .transition(transition)
-                        case .sheet(let view, _, _):
-                            view
+                    case .plain(let view, hash: _, zIndex: let zIndex):
+                        view
+                            .zIndex(zIndex)
+                    case .animated(let view,
+                                   transition: let transition,
+                                   animation: _,
+                                   hash: _,
+                                   zIndex: let zIndex):
+                        view
+                            .zIndex(zIndex)
+                            .transition(transition)
+                    case .sheet(let view, _, _):
+                        view
                     }
                 }
             }

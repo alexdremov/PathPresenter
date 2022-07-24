@@ -163,21 +163,21 @@ extension PathPresenter {
             let typeErased = AnyView(value)
             let zIndex = Double(path.count)
             switch type {
-                case .plain:
-                    relevantAnimation = nil
-                    path.append(.plain(view: typeErased, hash: value.id.hashValue, zIndex: zIndex))
-                case .animated(transition: let anyTransition, animation: let animation):
-                    relevantAnimation = animation
-                    path.append(
-                        .animated(view: typeErased,
-                                  transition: anyTransition,
-                                  animation: animation,
-                                  hash: value.id.hashValue,
-                                  zIndex: zIndex))
-                case .sheet(onDismiss: let onDismiss):
-                    path.append(.sheet(view: typeErased,
-                                       hash: value.id.hashValue,
-                                       onDismiss: onDismiss))
+            case .plain:
+                relevantAnimation = nil
+                path.append(.plain(view: typeErased, hash: value.id.hashValue, zIndex: zIndex))
+            case .animated(transition: let anyTransition, animation: let animation):
+                relevantAnimation = animation
+                path.append(
+                    .animated(view: typeErased,
+                              transition: anyTransition,
+                              animation: animation,
+                              hash: value.id.hashValue,
+                              zIndex: zIndex))
+            case .sheet(onDismiss: let onDismiss):
+                path.append(.sheet(view: typeErased,
+                                   hash: value.id.hashValue,
+                                   onDismiss: onDismiss))
             }
         }
 
