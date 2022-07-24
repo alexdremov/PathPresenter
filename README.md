@@ -1,6 +1,7 @@
 # PathPresenter
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/AlexRoar/PathPresenter)
 ![GitHub top language](https://img.shields.io/github/languages/top/AlexRoar/PathPresenter)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/054cef3e06ed4bf69725db51a81e1c1b)](https://www.codacy.com/gh/AlexRoar/PathPresenter/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AlexRoar/PathPresenter&amp;utm_campaign=Badge_Grade)
 
 Pure SwiftUI routing with transitions, animations, and `.sheet()` support.
 
