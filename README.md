@@ -1,11 +1,15 @@
 # PathPresenter
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/AlexRoar/PathPresenter)
+![GitHub top language](https://img.shields.io/github/languages/top/AlexRoar/PathPresenter)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/054cef3e06ed4bf69725db51a81e1c1b)](https://www.codacy.com/gh/AlexRoar/PathPresenter/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AlexRoar/PathPresenter&amp;utm_campaign=Badge_Grade)
+
 Pure SwiftUI routing with transitions, animations, and `.sheet()` support.
 
 In SwiftUI, View is a function of the state. Routing is not an exception.
 
 ## Why
 - `.sheet()` usages are usually messy, deviate from app architecture, and require additional business-logic
-- Creating view sequences in SwiftUI is not elegant if not messy
+- Creating view sequences in SwiftUI is not elegant and even not messy
 - MVVM is gorgeous, but what about one level above? Routing between MVVM modules is cluttered.
 
 ## Advantages
@@ -110,7 +114,7 @@ struct RootViewGitHub: View {
 ```
 <hr>
 
-## Transitions and multi-view example
+## Transitions and animation example
 <img width=900 src="https://i.ibb.co/NVwcQp5/ezgif-com-gif-maker-4.gif">
 
 ## Documentation

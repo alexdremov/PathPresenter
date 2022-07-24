@@ -13,8 +13,8 @@ import SwiftUI
  */
 public enum PathPresenter {}
 
-extension PathPresenter {
-    public typealias Action = () -> Void
+public extension PathPresenter {
+    typealias Action = () -> Void
 
     /**
      Main library view.

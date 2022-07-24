@@ -8,11 +8,11 @@
 import Foundation
 import SwiftUI
 
-extension PathPresenter {
+public extension PathPresenter {
     /**
      Storage for path information
      */
-    public struct Path: Equatable {
+    struct Path: Equatable {
         /**
          Helper structure as `ForEach` works with `Identifiable` instances only
          */

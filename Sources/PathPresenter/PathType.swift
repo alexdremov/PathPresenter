@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUI
 
-extension PathPresenter {
-    public enum PathType {
+public extension PathPresenter {
+    enum PathType {
         /**
          * Just show a view. No animation, no transition.
          * Show view above all other views

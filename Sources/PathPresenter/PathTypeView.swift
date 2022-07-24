@@ -8,12 +8,12 @@
 import Foundation
 import SwiftUI
 
-extension PathPresenter {
+public extension PathPresenter {
     /**
      Used internally for combining view with information about how it needs to be presented
      See `PathType`
      */
-    public enum PathTypeView: Hashable, Identifiable {
+    enum PathTypeView: Hashable, Identifiable {
         case plain(view: AnyView,
                    hash: Int,
                    zIndex: Double)
@@ -74,7 +74,7 @@ extension PathPresenter {
         }
 
         public static func == (lhs: PathPresenter.PathTypeView,
-                        rhs: PathPresenter.PathTypeView) -> Bool {
+                               rhs: PathPresenter.PathTypeView) -> Bool {
             switch lhs {
             case .plain(_, hash: let hash, _):
                 if case .plain(_, hash: let hashSecond, _) = rhs {
