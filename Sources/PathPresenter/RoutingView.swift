@@ -87,6 +87,7 @@ public extension PathPresenter {
          */
         private func presenter(content: [PathTypeView], sheet: Bool = false) -> some View {
             ZStack(alignment: .topLeading) {
+                Color.clear
                 if let rootView = rootView, !sheet {
                     rootView
                         .zIndex(-1)
