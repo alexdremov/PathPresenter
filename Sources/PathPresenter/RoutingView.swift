@@ -109,6 +109,8 @@ public extension PathPresenter {
                     }
                 }
             }
+            .frame(minWidth: .infinity, minHeight: .infinity)
+            .ignoresSafeArea()
         }
 
         /**
