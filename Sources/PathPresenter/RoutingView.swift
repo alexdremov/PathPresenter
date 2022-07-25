@@ -110,7 +110,7 @@ public extension PathPresenter {
                     }
                 }
             }
-            .frame(minWidth: .infinity, minHeight: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .ignoresSafeArea()
         }
 
