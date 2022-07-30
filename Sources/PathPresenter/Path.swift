@@ -261,7 +261,12 @@ public extension PathPresenter {
         
         public mutating func reverse() {
             defer { updateSheet() }
-            path.reverse()
+            let oldPath = path
+            path = []
+            
+            for elem in oldPath.reversed() {
+                append(elem.view, type: elem.type)
+            }
         }
     }
 }

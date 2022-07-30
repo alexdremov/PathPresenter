@@ -36,6 +36,30 @@ public extension PathPresenter {
                 return hash
             }
         }
+        
+        public var view: AnyView {
+            switch self {
+                case .plain(let view, _, _):
+                    return view
+                case .animated(let view, _, _, _, _):
+                    return view
+                case .sheet(let view, _, _):
+                    return view
+            }
+        }
+        
+        public var type: PathType {
+            switch self {
+                case .plain:
+                    return .plain
+                case .animated(_,
+                               transition: let transition,
+                               animation: let animation, _, _):
+                    return .animated(transition: transition, animation: animation)
+                case .sheet(_, _, let onDismiss):
+                    return .sheet(onDismiss: onDismiss)
+            }
+        }
 
         var zIndex: Double {
             get {
