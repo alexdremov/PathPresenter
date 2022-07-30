@@ -26,6 +26,8 @@ No need to remaster the whole codebase to present the view with `.sheet()`. It j
 
 ## Example
 
+Example from the video: [PathPresenterExample](https://github.com/AlexRoar/PathPresenterExample/tree/main)
+
 The view hierarchy is managed through the `PathPresenter.Path()` structure.
 You can push new views into it using `.append` methods and delete views from the top using `.removeLatest`.
 
