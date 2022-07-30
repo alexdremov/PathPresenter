@@ -258,5 +258,10 @@ public extension PathPresenter {
             let dismiss = removeLastSheet()
             dismiss?()
         }
+        
+        public mutating func reverse() {
+            defer { updateSheet() }
+            path.reverse()
+        }
     }
 }
