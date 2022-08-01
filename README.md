@@ -9,7 +9,9 @@ https://user-images.githubusercontent.com/25539425/181922855-3ff3aa77-757b-4091-
 
 Pure SwiftUI routing with transitions, animations, and `.sheet()` support.
 
-In SwiftUI, View is a function of the state. Routing is not an exception.
+In SwiftUI, View is a function of the state. Routing is not an exception. Reasoning and under the hood explanation can be found on my blog: 
+
+http://alexdremov.me/swiftui-navigation-is-a-mess-heres-what-you-can-do/
 
 ## Why
 - `.sheet()` usages are usually messy, deviate from app architecture, and require additional business-logic
