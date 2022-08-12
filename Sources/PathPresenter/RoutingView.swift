@@ -24,11 +24,6 @@ public extension PathPresenter {
         /**
          Stored path state. Not used if initialized with Binding
          */
-        @State private var pathStored: Path = Path()
-
-        /**
-         Refers to internal state if initialized without binding
-         */
         @Binding private var path: Path
 
         /**
@@ -54,24 +49,6 @@ public extension PathPresenter {
         public init<RootView: View>(path: Binding<Path>,
                              @ViewBuilder rootView:() -> RootView) {
             self.init(path: path)
-            self.rootView = AnyView(rootView())
-        }
-
-        /**
-         Use internal path state
-         */
-        public init() {
-            self._path = Binding.constant(Path())
-            self.rootView = nil
-
-            self._path = $pathStored
-        }
-
-        /**
-         Use internal path state and provide `rootView`
-         */
-        public init<RootView: View>(@ViewBuilder rootView: () -> RootView) {
-            self.init()
             self.rootView = AnyView(rootView())
         }
 
