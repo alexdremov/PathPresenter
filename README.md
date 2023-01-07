@@ -15,7 +15,7 @@ http://alexdremov.me/swiftui-navigation-is-a-mess-heres-what-you-can-do/
 
 ## Why
 - `.sheet()` usages are usually messy, deviate from app architecture, and require additional business-logic
-- Creating view sequences in SwiftUI is not elegant and even not messy
+- Creating view sequences in SwiftUI is not elegant
 - MVVM is gorgeous, but what about one level above? Routing between MVVM modules is cluttered.
 
 ## Advantages
