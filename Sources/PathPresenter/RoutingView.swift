@@ -13,6 +13,12 @@ import SwiftUI
  */
 public enum PathPresenter {}
 
+private extension View {
+    func `if`<Content: View>(_ conditional: Bool, content: (Self) -> Content) -> TupleView<(Self?, Content?)> {
+        if conditional { return TupleView((nil, content(self))) } else { return TupleView((self, nil)) }
+    }
+}
+
 public extension PathPresenter {
     typealias Action = () -> Void
 
@@ -35,20 +41,32 @@ public extension PathPresenter {
          Root view is always presented. Can be nil if no view specified
          */
         var rootView: AnyView?
+        
+        /**
+         PathPresenter views will try to occupy as much space as possible
+         */
+        private let enforceFullScreen: Bool
 
         /**
          Init with external path state
          */
-        public init(path: Binding<Path>) {
+        public init(
+            path: Binding<Path>,
+            enforceFullScreen: Bool = true
+        ) {
             self._path = path
+            self.enforceFullScreen = enforceFullScreen
         }
 
         /**
          Init with external path state and provide `rootView`
          */
-        public init<RootView: View>(path: Binding<Path>,
-                             @ViewBuilder rootView:() -> RootView) {
-            self.init(path: path)
+        public init<RootView: View>(
+            path: Binding<Path>,
+            enforceFullScreen: Bool = true,
+            @ViewBuilder rootView:() -> RootView
+        ) {
+            self.init(path: path, enforceFullScreen: enforceFullScreen)
             self.rootView = AnyView(rootView())
         }
 
@@ -64,7 +82,9 @@ public extension PathPresenter {
          */
         private func presenter(content: [PathTypeView], sheet: Bool = false) -> some View {
             ZStack(alignment: .topLeading) {
-                Color.clear
+                if enforceFullScreen {
+                    Color.clear
+                }
                 if let rootView = rootView, !sheet {
                     rootView
                         .zIndex(-1)
@@ -87,7 +107,9 @@ public extension PathPresenter {
                     }
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .if(enforceFullScreen) {
+                $0.frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
         }
 
         /**
@@ -100,7 +122,7 @@ public extension PathPresenter {
         /**
          Only sheet views
          */
-        @ViewBuilder var shitView: some View {
+        @ViewBuilder var sheetView: some View {
             presenter(content: path.onlySheet, sheet: true)
         }
 
@@ -114,7 +136,7 @@ public extension PathPresenter {
                        onDismiss: {
                     path.sheetDismissed()
                 }, content: {
-                    shitView
+                    sheetView
                 })
         }
     }
