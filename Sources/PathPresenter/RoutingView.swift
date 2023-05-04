@@ -46,16 +46,25 @@ public extension PathPresenter {
          PathPresenter views will try to occupy as much space as possible
          */
         private let enforceFullScreen: Bool
+        
+        
+        /**
+         PathPresenter shows all views in path, this may lead to inapropriate .onAppear fire.
+         This option asks it to show only the last view
+         */
+        private let showOnlyLast: Bool
 
         /**
          Init with external path state
          */
         public init(
             path: Binding<Path>,
-            enforceFullScreen: Bool = true
+            enforceFullScreen: Bool = true,
+            showOnlyLast: Bool = false
         ) {
             self._path = path
             self.enforceFullScreen = enforceFullScreen
+            self.showOnlyLast = showOnlyLast
         }
 
         /**
@@ -64,9 +73,10 @@ public extension PathPresenter {
         public init<RootView: View>(
             path: Binding<Path>,
             enforceFullScreen: Bool = true,
+            showOnlyLast: Bool = false,
             @ViewBuilder rootView:() -> RootView
         ) {
-            self.init(path: path, enforceFullScreen: enforceFullScreen)
+            self.init(path: path, enforceFullScreen: enforceFullScreen, showOnlyLast: showOnlyLast)
             self.rootView = AnyView(rootView())
         }
 
@@ -75,6 +85,29 @@ public extension PathPresenter {
          */
         public var pathBinding: Binding<Path> {
             $path
+        }
+        
+        @ViewBuilder
+        private func getElementView(element elem: PathTypeView) -> some View {
+            switch elem {
+                case .plain(let view, hash: _, zIndex: let zIndex):
+                    view
+                        .zIndex(zIndex)
+                case .animated(let view,
+                               transition: let transition,
+                               animation: _,
+                               hash: _,
+                               zIndex: let zIndex):
+                    view
+                        .zIndex(zIndex)
+                        .transition(transition)
+                case .sheet(let view, _, _):
+                    view
+            }
+        }
+        
+        private func getLastNotSheet(content: [PathTypeView]) -> PathTypeView? {
+            content.last{!$0.isSheet}
         }
 
         /**
@@ -89,21 +122,13 @@ public extension PathPresenter {
                     rootView
                         .zIndex(-1)
                 }
-                ForEach(content, id: \.hashValue) { elem in
-                    switch elem {
-                    case .plain(let view, hash: _, zIndex: let zIndex):
-                        view
-                            .zIndex(zIndex)
-                    case .animated(let view,
-                                   transition: let transition,
-                                   animation: _,
-                                   hash: _,
-                                   zIndex: let zIndex):
-                        view
-                            .zIndex(zIndex)
-                            .transition(transition)
-                    case .sheet(let view, _, _):
-                        view
+                if showOnlyLast {
+                    if let elem = getLastNotSheet(content: content) {
+                        getElementView(element: elem)
+                    }
+                } else {
+                    ForEach(content, id: \.hashValue) { elem in
+                        getElementView(element: elem)
                     }
                 }
             }
